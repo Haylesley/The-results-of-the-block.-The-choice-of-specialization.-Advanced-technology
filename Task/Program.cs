@@ -14,3 +14,29 @@ string[] newArray = TaskSolution(array);
 Console.Write($"[\"{String.Join("\", \"", array)}\"] -> [\"{String.Join("\", \"", DeleteNull(newArray))}\"]");
 
 //=====================Methods=============================
+
+string[] CreatingArray()
+{
+    int n = GetNumberFromUser($"Введите количество элементов массива: ", "Ошибка");
+    string[] array = new string[n];
+    
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.WriteLine($"Введите {i + 1} элемент массива: ");
+        array[i] =Console.ReadLine();
+    }
+    return array;
+
+}
+
+int GetNumberFromUser(string message, string errorMessage)
+{
+    while (true)
+    {
+        Console.Write(message);
+        bool isCorrect = int.TryParse(Console.ReadLine(), out int userNumber);
+        if (isCorrect)
+            return userNumber;
+        Console.WriteLine(errorMessage);
+    }
+}
