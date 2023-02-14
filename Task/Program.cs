@@ -15,6 +15,34 @@ Console.Write($"[\"{String.Join("\", \"", array)}\"] -> [\"{String.Join("\", \""
 
 //=====================Methods=============================
 
+// Удаляем пустые элементы массива 
+string[] DeleteNull(string[] array)
+{
+    int k = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] == null)
+            k++;
+    }
+    Array.Resize(ref array, array.Length - k);
+    return array;
+}
+
+string[] TaskSolution(string[] array)
+{
+    string[] newArray = new string[array.Length];
+
+    for (int i = 0, j = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= 3)
+        {
+            newArray[j] = array[i];
+            j++;
+        }
+    }
+    return newArray;
+}
+
 string[] CreatingArray()
 {
     int n = GetNumberFromUser($"Введите количество элементов массива: ", "Ошибка");
